@@ -1,5 +1,0 @@
-[  0%] Built target drivetrain_xacro_generated_to_devel_space_
-[35m[1mScanning dependencies of target drivetrain[0m
-[ 50%] [32mBuilding CXX object CMakeFiles/drivetrain.dir/src/gzbo_world_plugin.cpp.o[0m
-[100%] [32m[1mLinking CXX shared library /home/sumitomo/Documents/SumiyomoAGV/sumitomo_ws/devel/.private/drivetrain/lib/libdrivetrain.so[0m
-[100%] Built target drivetrain

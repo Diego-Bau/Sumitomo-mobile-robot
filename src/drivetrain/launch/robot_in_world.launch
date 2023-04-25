@@ -20,6 +20,10 @@
     <!-- Load joint controller configurations from YAML file to parameter server -->
     <!-- <rosparam command="load" file="$(arg CAN_controller)"/> -->
 
+    <!-- Bus configuration (canSetup.sh) 
+    <node name="canSetup" pkg="drivetrain" type="canSetUp.sh">
+    </node> -->
+
     <!-- ===== Launch ROS nodes ===== -->
         <!-- Load CAN configuration node (file) -->
     <node name="canopen_chain" pkg="canopen_chain_node" type="canopen_chain_node" output="screen" clear_params="true">
@@ -27,6 +31,14 @@
         <rosparam command="load" file="$(arg CAN_controller)" />
         <rosparam command="load" file="$(arg CAN_nodes)" />
     </node>
+	<!-- Load DriverInit.py node -->
+    <node name="SmartrisDriverInit" pkg="drivetrain" type="SmartrisDriverInit.py">
+    </node>
+
+    <node name="SmartrisDriverInit2" pkg="drivetrain" type="SmartrisDriverInit.py"> >
+    </node> 
+
+
     <!-- Camera and line detector nodes -->
     <node name="camera" pkg="vision" type="camera.py">
     </node>  
