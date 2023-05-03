@@ -55,7 +55,7 @@ class AppSmartris:
 #			print("motor in motion", self.motor_cmd)
 			else:
 				print("Dato enviado: ", self.motor_cmd)
-				vel_service_call= self.set_object(node, obj, str(self.motor_cmd * 10), False)
+				vel_service_call = self.set_object(node, obj, str(self.motor_cmd * 10), False)
 		
 		except rospy.ServiceException as e:
 			# catch any errors

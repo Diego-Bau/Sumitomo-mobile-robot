@@ -10,7 +10,7 @@ import cv_bridge
 class LineFollowerNode():
 
 	def __init__(self):
-		# constructor node publishers and subscribers and class variables
+		#constructor node publishers and subscribers and class variables
 		rospy.init_node("line_detector")
 		self.img_pub = rospy.Publisher("/processed_image/line",Image,queue_size=1)
 		self.cebra_pub = rospy.Publisher("/cebra",Bool,queue_size=1)
@@ -32,7 +32,7 @@ class LineFollowerNode():
 		try:
 			frame = self.bridge.imgmsg_to_cv2(data,desired_encoding="bgr8")
 			self.frame = frame
-		except cv_bridge.CvBridgeError():
+		except cv_bridge.CvBridgeError():	
 			print("Error CvBridge")
 
 	def processImg(self):
@@ -60,11 +60,10 @@ class LineFollowerNode():
 
 		# blur to binary (white line) thresholding
 		blur = cv2.GaussianBlur(gray,(5,5),0)
-		val,thresh = cv2.threshold(blur,100,255,cv2.THRESH_BINARY_INV)
+		val,thresh = cv2.threshold(blur,90,255,cv2.THRESH_BINARY_INV)#100
 
-		# filter out noise
 		# find all blobs (white binary)
-		threshold = 150		# takeout size
+		threshold = 2000		# takeout size#1500
 		nb_components,output,stats,centroids = cv2.connectedComponentsWithStats(thresh,connectivity=8)	# numComponents, components, stats, centroids // type 4 or 8
 		sizes = stats[1:, -1]; nb_components = nb_components - 1	# take sizes
 		img = np.zeros((output.shape),dtype = np.uint8)	# image carrier
@@ -88,26 +87,28 @@ class LineFollowerNode():
 			# append for entering crosswalk
 			if len(self.after_zero) >= 1 and self.after_zero[0] == 0:
 				self.after_zero.append(count)
+
 			# check out 3 or 4 contours to confirm crosswalk detection
 			if 3 in self.after_zero or 4 in self.after_zero:
 				self.cebra_pub.publish(True)
 				print("cebra detected")
 				self.after_zero = []
 			else:
+
 				self.cebra_pub.publish(False)
 			# crosswalk saturation -> restart accumulator
-			if len(self.after_zero) >= 65:
+			if len(self.after_zero) >= 20:#65 
 				self.after_zero = []
 			# line detection after 85 consecutive 1s detected
-			if len(self.only_ones) >= 85:
+			if len(self.only_ones) >= 20:#85
 				print("follow line")
 				self.ones_pub.publish(True)
-				self.only_ones = []
+				#self.only_ones = []
 			else:
 				self.ones_pub.publish(False)
 			# max contour -> black line detected
 			c = max(contours,key=cv2.contourArea)
-			# min enclosing area rectangle
+		        # min enclosing area rectangle
 			rect = cv2.minAreaRect(c)
 			box = cv2.boxPoints(rect)
 			box = np.int0(box)
@@ -131,6 +132,7 @@ class LineFollowerNode():
 			self.after_zero.append(0)
 			self.only_ones = []
 			self.zero_pub.publish(True)
+			self.ones_pub.publish(False)
 		# monitoring
 		print('after_zeros:',self.after_zero)
 		print('only ones:',self.only_ones)
