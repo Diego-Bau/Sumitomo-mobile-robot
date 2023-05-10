@@ -1,1 +1,0 @@
-/home/sumitomo/Documents/SumiyomoAGV/sumitomo_ws/devel/.private/puzzlebot_world/share/puzzlebot_world/cmake/puzzlebot_worldConfig.cmake

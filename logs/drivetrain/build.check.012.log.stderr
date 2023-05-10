@@ -1,9 +1,0 @@
-[31m[1mCMake Error[0m at /home/sumitomo/Documents/SumiyomoAGV/sumitomo_ws/src/drivetrain/CMakeLists.txt:10 (find_package):
-  find_package called with invalid argument "gazebo"
-
-
-[31m[1mCMake Error[0m at /home/sumitomo/Documents/SumiyomoAGV/sumitomo_ws/src/drivetrain/CMakeLists.txt:123 (catkin_package):
-  Unknown CMake command "catkin_package".
-
-
-make: *** [cmake_check_build_system] Error 1

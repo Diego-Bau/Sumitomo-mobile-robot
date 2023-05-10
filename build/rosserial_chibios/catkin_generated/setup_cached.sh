@@ -8,8 +8,6 @@
 
 # modified environment variables
 export CMAKE_PREFIX_PATH="/home/sumitomo/Documents/SumiyomoAGV/sumitomo_ws/devel/.private/rosserial_chibios:$CMAKE_PREFIX_PATH"
-export LD_LIBRARY_PATH="/home/sumitomo/Documents/SumiyomoAGV/sumitomo_ws/devel/.private/rosserial_chibios/lib:$LD_LIBRARY_PATH"
-export PKG_CONFIG_PATH="/home/sumitomo/Documents/SumiyomoAGV/sumitomo_ws/devel/.private/rosserial_chibios/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PWD='/home/sumitomo/Documents/SumiyomoAGV/sumitomo_ws/build/rosserial_chibios'
 export ROSLISP_PACKAGE_DIRECTORIES="/home/sumitomo/Documents/SumiyomoAGV/sumitomo_ws/devel/.private/rosserial_chibios/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
 export ROS_PACKAGE_PATH="/home/sumitomo/Documents/SumiyomoAGV/sumitomo_ws/src/rosserial/rosserial_chibios:$ROS_PACKAGE_PATH"

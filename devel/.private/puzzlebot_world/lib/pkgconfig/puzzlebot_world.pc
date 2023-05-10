@@ -1,8 +1,0 @@
-prefix=/home/sumitomo/Documents/SumiyomoAGV/sumitomo_ws/devel/.private/puzzlebot_world
-
-Name: puzzlebot_world
-Description: Description of puzzlebot_world
-Version: 0.0.1
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

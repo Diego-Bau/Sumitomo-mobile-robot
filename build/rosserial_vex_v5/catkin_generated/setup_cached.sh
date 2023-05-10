@@ -9,7 +9,6 @@
 # modified environment variables
 export CMAKE_PREFIX_PATH="/home/sumitomo/Documents/SumiyomoAGV/sumitomo_ws/devel/.private/rosserial_vex_v5:$CMAKE_PREFIX_PATH"
 export LD_LIBRARY_PATH="/home/sumitomo/Documents/SumiyomoAGV/sumitomo_ws/devel/.private/rosserial_vex_v5/lib:$LD_LIBRARY_PATH"
-export PKG_CONFIG_PATH="/home/sumitomo/Documents/SumiyomoAGV/sumitomo_ws/devel/.private/rosserial_vex_v5/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PWD='/home/sumitomo/Documents/SumiyomoAGV/sumitomo_ws/build/rosserial_vex_v5'
 export PYTHONPATH="/home/sumitomo/Documents/SumiyomoAGV/sumitomo_ws/devel/.private/rosserial_vex_v5/lib/python2.7/dist-packages:$PYTHONPATH"
 export ROSLISP_PACKAGE_DIRECTORIES="/home/sumitomo/Documents/SumiyomoAGV/sumitomo_ws/devel/.private/rosserial_vex_v5/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"

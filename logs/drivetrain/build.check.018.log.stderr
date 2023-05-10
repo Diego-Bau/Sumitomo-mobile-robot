@@ -1,3 +1,0 @@
-[33mWARNING: Target "drivetrain" requests linking to directory "/usr/include".  Targets may link only to libraries.  CMake is dropping the item.[0m
-[33mWARNING: Target "drivetrain" requests linking to directory "/usr/include/gazebo-9".  Targets may link only to libraries.  CMake is dropping the item.[0m
-[33mWARNING: Target "drivetrain" requests linking to directory "/usr/include/sdformat-6.3".  Targets may link only to libraries.  CMake is dropping the item.[0m
