@@ -11,16 +11,24 @@ class AppSmartris:
 		self.set_object = rospy.ServiceProxy("driver/set_object", SetObject)
 		rospy.Subscriber("/cmd_vel", Twist, self.cmd_Callback)
 		rospy.Subscriber("/Ultra", Float32, self.ultra_fault)
-
+		rospy.Subscriber("btn_manual", Bool, self.btn_manual)
+		rospy.Subscriber("btn_seguidordeLinea", Bool, self.btn_seguidordeLinea)
+		rospy.Subscriber("btn_estacion1", Bool, self.btn_estacion1)
+		rospy.Subscriber("btn_estacion2", Bool, self.btn_estacion2)
+		rospy.Subscriber("cmd_velJoystick", Twist, self.cmd_velJoystick)
 		#60FF value +: antihorario
 		#60FF value -: horario
-
 
 		# variables
 		self.motor_cmd = 0 #velocidad LINE FOLLOWER
 		self.motor_cmdc = 0 #velocidad control
-		self.dist= 0
-		
+		self.dist= 0 
+		self.manual = 0 #activa el modo manual del sistema en el HMI
+		self.seguidordeLinea = 0 #activa el modo seguidor de linea en el HMI
+		self.estacion1 = 0 #indica al sistema ir a la estación 1 del alamacen de Sumitomo
+		self.estacion2 = 0  #indica al sistema ir a la estacion 2 del almacen de Sumitomo
+		self.velJoystickL = 0 #indica al sistema moverse deforma lineal segun el joystick del HMI
+		self.velJoystickA = 0 #indica al sistema moverse deforma angula segun el joystick del HMI
 		# init node
 		rospy.init_node(nodeName)
 		rate = rospy.Rate(60)
@@ -30,6 +38,22 @@ class AppSmartris:
 		
 	def ultra_fault(self, msg):
 		self.dist = msg.data
+
+	def btn_manual(self, msg):
+		self.manual = msg.data
+
+	def btn_seguidordeLinea(self, msg):
+		self.seguidordeLinea = msg.data
+
+	def btn_estacion1(self, msg):
+		self.estacion1 = msg.data
+
+	def btn_estacion2(self, msg):
+		self.estacion2 = msg.data
+
+	def cmd_velJoystick(self, msg):
+		self.velJoystickL = msg.linear
+		self.velJoystickA = msg.angular
 
 #		print(dist)		
 #		if dist < 40: # These are cm
