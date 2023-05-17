@@ -24,8 +24,10 @@ if __name__ == "__main__":
 	rospy.wait_for_service("driver/init")
 	rospy.wait_for_service("driver/halt")
 	rospy.wait_for_service("driver/shutdown")
+	rospy.wait_for_service("driver/recover")
 	driverhalt = rospy.ServiceProxy("driver/halt", Trigger)
 	drivershutdown = rospy.ServiceProxy("driver/shutdown", Trigger)
+	driverrecover = rospy.ServiceProxy("driver/recover", Trigger)
 	# put the Smartris in Init mode 
 	driverInit = rospy.ServiceProxy("driver/init", Trigger)
         init_call = driverInit()
@@ -50,20 +52,34 @@ if __name__ == "__main__":
 		driverhalt = rospy.ServiceProxy("driver/halt", Trigger)
 		halt_call = driverhalt()
 		print("Halt")
-		rospy.sleep(3)
+		rospy.sleep(1)
 		shutdown_call = drivershutdown()
 		print("Shutdown")
-		rospy.sleep(3)
+		rospy.sleep(1)
+#		recover_call = driverrecover()
+#		print("Recover")
+#		rospy.sleep(1)
 		#this init should send an error
 		#init_call = driverInit()
 		#print("Init")
 		#rospy.sleep(3)
 		halt_call = driverhalt()
 		print("Halt")
-		rospy.sleep(3)
+		rospy.sleep(1)
+		recover_call = driverrecover()
+                print("Recover")
+                rospy.sleep(1)
+
+		init_call = driverInit()
+		print("Init")
+		rospy.sleep(1)
+		init_call = driverInit()
+		print("Init")
+		rospy.sleep(1)
 		init_call = driverInit()
 		print("Init")
 		print("Smartris in run")
+		
 	
 	
 	

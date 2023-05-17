@@ -22,4 +22,7 @@ nodes:
     name: motorRight
     id: 1
     eds_file: "/home/sumitomo/Documents/SumiyomoAGV/sumitomo_ws/src/drivetrain/config/smartris.eds" 
-
+#  node2:
+#    name: motorLeft
+#    id: 2
+#    eds_file: "/home/sumitomo/Documents/SumiyomoAGV/sumitomo_ws/src/drivetrain/config/smartris.eds" 

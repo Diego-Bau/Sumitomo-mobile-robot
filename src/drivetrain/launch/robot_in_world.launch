@@ -35,12 +35,23 @@
         <rosparam command="load" file="$(arg CAN_controller)" />
         <rosparam command="load" file="$(arg CAN_nodes)" />
     </node>
-	<!-- Load DriverInit.py node -->
-    <node name="SmartrisDriverInit" pkg="drivetrain" type="SmartrisDriverInit.py">
-    </node>
+       <!-- Can communication log 
+    <node name="can_com_log" pkg="drivetrain" type="can-com-fix.sh">
+    </node>  
+-->
 
+       <!--Can communication verify
+    <node name="can_com_verify" pkg="drivetrain" type="can-monitor.py">
+    </node>      
+-->
+
+	<!-- Load DriverInit.py node 
+    <node name="SmartrisDriverInit" pkg="drivetrain" type="SmartrisDriverInit.py">
+    </node>  -->
+
+<!--
     <node name="SmartrisDriverInit2" pkg="drivetrain" type="SmartrisDriverInit.py"> >
-    </node> 
+    </node>  -->
 
 
     <!-- Camera and line detector nodes -->
@@ -136,5 +147,14 @@ B    <node name="appSmartris" pkg="drivetrain" type="appSmartris.py">
 B    </node> 
 -->
 
+       <!-- Can communication log -->
+    <node name="can_com_log" pkg="drivetrain" type="can-com-fix.sh">
+    </node>
+       <!--Can communication verify -->
+    <node name="can_com_verify" pkg="drivetrain" type="can-monitor.py">
+    </node>
+       <!--Driver-Status verify
+    <node name="driver_status_verify" pkg="drivetrain" type="get-fun.py">
+    </node> -->
 
 </launch>
