@@ -1,5 +1,6 @@
 #!/usr/bin/env python2.7
 import rospy
+import subprocess
 import time
 import os
 from canopen_chain_node.srv import GetObject
@@ -7,6 +8,8 @@ from std_srvs.srv import Trigger
 
 PIN= "398" #GPIO
 node= 'motorRight'
+
+REBOOT= ["shutdown", "-h", "now"]
 
 #Function to verify the status from the driver, if it is "fault" it will restart all the system
 
@@ -34,13 +37,20 @@ get_value= get_lecture.value
 print("get_value: ", get_value)
 if ((get_value == '37023') or (get_value == "37535")): # or (get_value == "4663")):
     print("Fault code detected. Restarting...")
+
     f = open("/sys/class/gpio/gpio"+PIN+"/value" , "a")
     f.write("1") #GPIO PIN ON
-#    time.sleep(1)
-#    f.write("0") #GPIO PIN ON
     f.close()
-    time.sleep(3)
-    
+
     os.system("ros-net-init-stop")
-    # os.system("shutdown now")
+
+  #  time.sleep(1)
+
+#    f = open("/sys/class/gpio/gpio"+PIN+"/value" , "a")
+#    f.write("0") #GPIO PIN ON
+  #  f.close()
+
+    
+#    os.system("sudo shutdown -h now")
+#    subprocess.call(REBOOT)
 
