@@ -30,7 +30,7 @@
     
     <!-- ===== Launch ROS nodes ===== -->
         <!-- Load CAN configuration node (file) -->
-    <node name="canopen_chain" pkg="canopen_chain_node" type="canopen_chain_node" output="screen" clear_params="true">
+    <node name="canopen_chain" pkg="canopen_chain_node" type="canopen_chain_node" output="screen" clear_params="false">
         <rosparam command="load" file="$(arg CAN_config)" />
         <rosparam command="load" file="$(arg CAN_controller)" />
         <rosparam command="load" file="$(arg CAN_nodes)" />
@@ -150,13 +150,18 @@ B    </node>
        <!-- Can communication log -->
     <node name="can_com_log" pkg="drivetrain" type="can-com-fix.sh">
     </node>
-       <!--Can communication verify -->
+       <!--Can communication verify 
     <node name="can_com_verify" pkg="drivetrain" type="can-monitor.py">
     </node>
     <node name="can_com_verify1" pkg="drivetrain" type="can-monitor.py">
     </node>
+-->
+
        <!--Driver-Status verify 
     <node name="driver_status_verify" pkg="drivetrain" type="get-fun.py">
     </node>  -->
+
+       <!--Hector_slam integrations -->
+    <include file="$(find hector_slam_launch)/launch/tutorial.launch"/>
 
 </launch>
